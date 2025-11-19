@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neo Cart</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="cart.css" />
+  </head>
+  <body>
+    <header>
+      <!-- logo -->
+      <div class="logo">
+        <i class="fa fa-shopping-cart"></i>
+        <h1>Neo-Cart</h1>
+      </div>
+      <div class="search-container">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        <input type="text" placeholder="Search products..." />
+      </div>
+      <div class="dropdowns">
+        <select name="Day" id="days">
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+          <option value="Saturday">Saturday</option>
+          <option value="Sunday">Sunday</option>
+        </select>
+        <select name="months" id="months">
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+      </div>
+      <!-- notification and avatar -->
+      <div class="notice-avatar">
+        <i class="fa fa-bell"></i>
+        <div class="avatar">
+          <img
+            src="https://images.unsplash.com/photo-1760497925596-a6462350c583?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDI1fHRvd0paRnNrcEdnfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&q=60&w=500"
+            alt="User Avatar"
+            class="avatar"
+          />
+        </div>
+      </div>
+    </header>
+    <!-- main -->
+    <main>
+      <!-- cards -->
+      <div class="cards">
+        <div class="card">
+          <h3>Total Potential Revenue Lost</h3>
+          <p>$2,340</p>
+        </div>
+        <div class="card">
+          <h3>Highest Abandoned Carts Value</h3>
+          <p>$1500</p>
+        </div>
+        <div class="card">
+          <h3>Average Cart Value</h3>
+          <p>$75</p>
+        </div>
+        <div class="card">
+          <h3>Recovery Rate</h3>
+          <p>45%</p>
+        </div>
+        <div class="card">
+          <h3>Emails Sent</h3>
+          <p>31</p>
+        </div>
+      </div>
+      <!-- abandoned carts and details -->
+      <div class="abandoned-details-container">
+        <!-- abandoned cart details -->
+        <div class="abandoned-cart">
+          <div class="abandoned-top">
+            <h2>Abandoned Cart</h2>
+            <select name="timeframe" id="timeframe">
+              <option value="last7days">Last 7 days</option>
+              <option value="last30days">Last 30 days</option>
+              <option value="last6months">Last 6 months</option>
+              <option value="last1year">Last 1 year</option>
+            </select>
+            <select name="Emails" id="Emails">
+              <option value="allEmails">All Emails</option>
+              <option value="sentEmails">Sent Emails</option>
+              <option value="notSentEmails">Not Sent Emails</option>
+            </select>
+          </div>
+          <div class="abandoned-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Cart items</th>
+                  <th>Cart Value</th>
+                  <th>Abandoned</th>
+                  <th>Recovery</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="table-avatar">
+                      <img
+                        src="https://images.unsplash.com/photo-1760320483662-066324412733?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDYyfFM0TUtMQXNCQjc0fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&q=60&w=500"
+                        alt=""
+                      />
+                    </div>
+                    Alabi Sandra
+                  </td>
+                  <td>
+                    <i class="fa-solid fa-shirt"></i>
+                    <i class="fa-solid fa-shirt"></i>
+                  </td>
+                  <td>$150</td>
+                  <td>2h ago</td>
+                  <td>Pending</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-avatar">
+                      <img
+                        src="https://plus.unsplash.com/premium_photo-1756147653740-3c43db81c5d7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDcwfFM0TUtMQXNCQjc0fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&q=60&w=500"
+                        alt=""
+                      />
+                    </div>
+                    Amadi Bethel
+                  </td>
+                  <td>
+                    <i class="fa-solid fa-shirt"></i>
+                    <i class="fa-solid fa-shirt"></i>
+                  </td>
+                  <td>$150</td>
+                  <td>1day ago</td>
+                  <td>Pending</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-avatar">
+                      <img
+                        src="https://images.unsplash.com/photo-1759852909538-57985f691821?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDgxfFM0TUtMQXNCQjc0fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&q=60&w=500"
+                        alt=""
+                      />
+                    </div>
+                    Abasifreke Antia
+                  </td>
+                  <td>
+                    <i class="fa-solid fa-shirt"></i>
+                    <i class="fa-solid fa-shirt"></i>
+                  </td>
+                  <td>$150</td>
+                  <td>4days ago</td>
+                  <td>Pending</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-avatar">
+                      <img
+                        src="https://images.unsplash.com/photo-1758745369774-3753d2d60b81?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDg0fFM0TUtMQXNCQjc0fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&q=60&w=500"
+                        alt=""
+                      />
+                    </div>
+                    Chike Ezeiru
+                  </td>
+                  <td>
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <i class="fa-solid fa-shirt"></i>
+                  </td>
+                  <td>$150</td>
+                  <td>4hr ago</td>
+                  <td>Pending</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-avatar">
+                      <img
+                        src="https://images.unsplash.com/photo-1747640731141-7d81ade721bd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=464"
+                        alt=""
+                      />
+                    </div>
+                    Design by Mazi
+                  </td>
+                  <td>
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <i class="fa-solid fa-shirt"></i>
+                  </td>
+                  <td>$150</td>
+                  <td>7min ago</td>
+                  <td>Pending</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+             <!-- abandoned details -->
+      <div class="abandoned-details">
+        <h2>Chike Ezeiru</h2>
+        <p>chikeezeiru@gmail.com</p>
+        <!-- items -->
+        <div class="abandoned-items">
+          <h4>Cart Items</h4>
+          <div class="abandoned-card">
+            <i class="fa-solid fa-shirt"></i>
+            <h4>Shirt</h4>
+            <p>$29</p>
+          </div>
+          <div class="abandoned-card">
+            <i class="fa-solid fa-pen-nib"></i>
+            <h4>Pen</h4>
+            <p>$100</p>
+          </div>
+        </div>
+        <div class="card-total">
+          <p>Cart total</p>
+          <p>$129</p>
+        </div>
+        <button class="email">Send Email</button>
+        <p class="check-out-other-cart">Check out other carts</p>
+      </div>
+      </div>
+ 
+    </main>
+    </main>
+  </body>
+</html>
