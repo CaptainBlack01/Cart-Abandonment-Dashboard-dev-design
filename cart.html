@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neo Cart</title>
+    <title>Neo Cart | Cart Abandonment Dashboard</title>
+    <link rel="stylesheet" href="design-system.css" />
+    <link rel="stylesheet" href="cart.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -11,21 +13,31 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="cart.css" />
   </head>
   <body>
-    <header>
-      <!-- logo -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header id="main-header">
       <div class="logo">
         <i class="fa fa-shopping-cart"></i>
         <h1>Neo-Cart</h1>
       </div>
       <div class="search-container">
-        <button type="submit"><i class="fa fa-search"></i></button>
-        <input type="text" placeholder="Search products..." />
+        <label for="cart-search" class="visually-hidden">Search products</label>
+        <button type="button" aria-label="Search">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+        <input
+          type="text"
+          id="cart-search"
+          placeholder="Search products..."
+          aria-label="Search products"
+        />
       </div>
       <div class="dropdowns">
-        <select name="Day" id="days">
+        <label for="days" class="visually-hidden">Day filter</label>
+        <select name="Day" id="days" aria-label="Day filter">
+          <option value="all">All Days</option>
           <option value="Monday">Monday</option>
           <option value="Tuesday">Tuesday</option>
           <option value="Wednesday">Wednesday</option>
@@ -34,7 +46,9 @@
           <option value="Saturday">Saturday</option>
           <option value="Sunday">Sunday</option>
         </select>
-        <select name="months" id="months">
+        <label for="months" class="visually-hidden">Month filter</label>
+        <select name="months" id="months" aria-label="Month filter">
+          <option value="all">All Months</option>
           <option value="January">January</option>
           <option value="February">February</option>
           <option value="March">March</option>
@@ -49,22 +63,20 @@
           <option value="December">December</option>
         </select>
       </div>
-      <!-- notification and avatar -->
-      <div class="notice-avatar">
+      <div class="notice-avatar" aria-label="Notifications and profile">
         <i class="fa fa-bell"></i>
         <div class="avatar">
           <img
             src="https://images.unsplash.com/photo-1760497925596-a6462350c583?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDI1fHRvd0paRnNrcEdnfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&q=60&w=500"
             alt="User Avatar"
-            class="avatar"
+            class="avatar-img"
           />
         </div>
       </div>
     </header>
-    <!-- main -->
-    <main>
-      <!-- cards -->
-      <div class="cards">
+
+    <main id="main-content">
+      <div class="cards" aria-label="Key metrics">
         <div class="card">
           <h3>Total Potential Revenue Lost</h3>
           <p>$2,340</p>
@@ -86,36 +98,49 @@
           <p>31</p>
         </div>
       </div>
-      <!-- abandoned carts and details -->
-      <div class="abandoned-details-container">
-        <!-- abandoned cart details -->
-        <div class="abandoned-cart">
+
+      <div class="abandoned-details-container" aria-label="Abandoned carts section">
+        <div class="abandoned-cart" aria-label="Abandoned carts list">
           <div class="abandoned-top">
             <h2>Abandoned Cart</h2>
-            <select name="timeframe" id="timeframe">
+            <label for="timeframe" class="visually-hidden">Timeframe filter</label>
+            <select name="timeframe" id="timeframe" aria-label="Timeframe filter">
               <option value="last7days">Last 7 days</option>
               <option value="last30days">Last 30 days</option>
               <option value="last6months">Last 6 months</option>
               <option value="last1year">Last 1 year</option>
             </select>
-            <select name="Emails" id="Emails">
+            <label for="email-filter" class="visually-hidden">Email filter</label>
+            <select name="Emails" id="email-filter" aria-label="Email filter">
               <option value="allEmails">All Emails</option>
               <option value="sentEmails">Sent Emails</option>
               <option value="notSentEmails">Not Sent Emails</option>
             </select>
+            <button
+              type="button"
+              class="btn-recover-all"
+              id="recoverAllBtn"
+              aria-label="Mark all carts as recovered"
+            >
+              <i class="fa fa-check"></i> Recover All
+            </button>
           </div>
           <div class="abandoned-table">
-            <table>
+            <table aria-label="Abandoned carts data">
+              <caption class="visually-hidden">
+                Abandoned carts with customer, items, value, and recovery status
+              </caption>
               <thead>
                 <tr>
-                  <th>Customer</th>
-                  <th>Cart items</th>
-                  <th>Cart Value</th>
-                  <th>Abandoned</th>
-                  <th>Recovery</th>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Cart items</th>
+                  <th scope="col">Cart Value</th>
+                  <th scope="col">Abandoned</th>
+                  <th scope="col">Recovery</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="cartTableBody">
                 <tr>
                   <td>
                     <div class="table-avatar">
@@ -132,7 +157,12 @@
                   </td>
                   <td>$150</td>
                   <td>2h ago</td>
-                  <td>Pending</td>
+                  <td><span class="status pending">Pending</span></td>
+                  <td>
+                    <button type="button" class="btn-send-email" data-customer="Alabi Sandra">
+                      Send Email
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>
@@ -150,7 +180,12 @@
                   </td>
                   <td>$150</td>
                   <td>1day ago</td>
-                  <td>Pending</td>
+                  <td><span class="status pending">Pending</span></td>
+                  <td>
+                    <button type="button" class="btn-send-email" data-customer="Amadi Bethel">
+                      Send Email
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>
@@ -168,7 +203,12 @@
                   </td>
                   <td>$150</td>
                   <td>4days ago</td>
-                  <td>Pending</td>
+                  <td><span class="status pending">Pending</span></td>
+                  <td>
+                    <button type="button" class="btn-send-email" data-customer="Abasifreke Antia">
+                      Send Email
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>
@@ -186,7 +226,12 @@
                   </td>
                   <td>$150</td>
                   <td>4hr ago</td>
-                  <td>Pending</td>
+                  <td><span class="status pending">Pending</span></td>
+                  <td>
+                    <button type="button" class="btn-send-email" data-customer="Chike Ezeiru">
+                      Send Email
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>
@@ -204,40 +249,47 @@
                   </td>
                   <td>$150</td>
                   <td>7min ago</td>
-                  <td>Pending</td>
+                  <td><span class="status pending">Pending</span></td>
+                  <td>
+                    <button type="button" class="btn-send-email" data-customer="Design by Mazi">
+                      Send Email
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
+            <div id="emptyState" class="empty-state" style="display: none">
+              <p>No abandoned carts found.</p>
+            </div>
           </div>
         </div>
-             <!-- abandoned details -->
-      <div class="abandoned-details">
-        <h2>Chike Ezeiru</h2>
-        <p>chikeezeiru@gmail.com</p>
-        <!-- items -->
-        <div class="abandoned-items">
-          <h4>Cart Items</h4>
-          <div class="abandoned-card">
-            <i class="fa-solid fa-shirt"></i>
-            <h4>Shirt</h4>
-            <p>$29</p>
+
+        <div class="abandoned-details" aria-label="Cart details" aria-live="polite">
+          <h2 id="detailCustomer">Chike Ezeiru</h2>
+          <p id="detailEmail">chikeezeiru@gmail.com</p>
+          <div class="abandoned-items">
+            <h4>Cart Items</h4>
+            <div class="abandoned-card">
+              <i class="fa-solid fa-shirt"></i>
+              <h4>Shirt</h4>
+              <p>$29</p>
+            </div>
+            <div class="abandoned-card">
+              <i class="fa-solid fa-pen-nib"></i>
+              <h4>Pen</h4>
+              <p>$100</p>
+            </div>
           </div>
-          <div class="abandoned-card">
-            <i class="fa-solid fa-pen-nib"></i>
-            <h4>Pen</h4>
-            <p>$100</p>
+          <div class="card-total">
+            <p>Cart total</p>
+            <p id="detailTotal">$129</p>
           </div>
+          <button type="button" class="email" id="detailEmailBtn">Send Email</button>
+          <a class="check-out-other-cart" href="#cartTableBody">Check out other carts</a>
         </div>
-        <div class="card-total">
-          <p>Cart total</p>
-          <p>$129</p>
-        </div>
-        <button class="email">Send Email</button>
-        <p class="check-out-other-cart">Check out other carts</p>
       </div>
-      </div>
- 
     </main>
-    </main>
+
+    <script src="cart.js"></script>
   </body>
 </html>
